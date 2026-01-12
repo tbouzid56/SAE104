@@ -19,5 +19,7 @@ var comprend real relation{id_formule INTEGER, no_creneau_hebdo INTEGER}key{id_f
 var inclure real relation{id_formule INTEGER, id_periode_conso CHAR}key{id_formule, id_periode_conso};
 
 
-// CONSTRAINT ville_fk_pays
-//     ville{nomp} <= pays{nomp};
+CONSTRAINT comprend_fk_creneau
+    comprend{no_creneau_hebdo} <= creneau{no_creneau_hebdo};
+CONSTRAINT comprend_fk_formule_tarifaire
+    comprend{id_formule} <= formule_tarifaire{id_formule};
