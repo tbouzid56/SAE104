@@ -1,0 +1,14 @@
+// var ... real relation {att TYPE, att TYPE} key{att};
+var Formule_tarifaire real relation {id_formule INTEGER, lib_formule CHAR, descriptif_formule CHAR, date_commercialisation CHAR} key{id_formule};
+var Puissance real relation {val_puissance INTEGER} key{val_puissance};
+var Periode_conso real relation {id_periode_conso CHAR, lib_periode_conso CHAR} key{id_periode_conso};
+var Tarif_abonnement real relation {prix_abo_ht RATIONAL, prix_abo_ttc RATIONAL, id_formule INTEGER, val_puissance INTEGER} key{id_formule, val_puissance};
+var Tarif_kwh real relation {prix_kwh_ht RATIONAL, prix_kwh_ttc RATIONAL, val_puissance INTEGER, id_formule INTEGER, id_periode_conso CHAR} key{val_puissance, id_formule, id_periode_conso};
+var Creneau real relation {no_creneau_hebdo INTEGER, jour_hebdo CHAR, heure_debut CHAR, heure_fin CHAR} key{no_creneau_hebdo};
+
+drop var Formule_tarifaire;
+drop var Puissance;
+drop var Periode_conso;
+drop var Tarif_abonnement;
+drop var Tarif_kwh;
+drop var Creneau;
