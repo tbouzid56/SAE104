@@ -1,13 +1,17 @@
-var Formule_tarifaire real relation {id_formule INTEGER, lib_formule CHAR, descriptif_formule CHAR, date_commercialisation CHAR} key{id_formule};
-var Puissance real relation {val_puissance INTEGER} key{val_puissance};
-var Periode_conso real relation {id_periode_conso CHAR, lib_periode_conso CHAR} key{id_periode_conso};
-var Tarif_abonnement real relation {prix_abo_ht RATIONAL, prix_abo_ttc RATIONAL, id_formule INTEGER, val_puissance INTEGER} key{id_formule, val_puissance};
-var Tarif_kwh real relation {prix_kwh_ht RATIONAL, prix_kwh_ttc RATIONAL, val_puissance INTEGER, id_formule INTEGER, id_periode_conso CHAR} key{val_puissance, id_formule, id_periode_conso};
-var Creneau real relation {no_creneau_hebdo INTEGER, jour_hebdo CHAR, heure_debut CHAR, heure_fin CHAR} key{no_creneau_hebdo};
-var Client real relation {id_client INTEGER, nom_cli CHAR, prenom_cli CHAR, adresse_cli CHAR, adresse_cli2 CHAR, adresse_cli3 CHAR, code_postale_cli CHAR, ville_cli CHAR, telephone_cli CHAR, mail_cli CHAR} key{id_client};
-var Compteur real relation {pdl_prm CHAR, adresse1 CHAR, adresse2 CHAR, adresse3 CHAR, code_postale CHAR, ville CHAR, date_hiver_ete CHAR, date_ete_hiver CHAR} key{pdl_prm};
-var Contrat real relation{no_contrat CHAR, date_debut_contrat CHAR} key{no_contrat};
-var Créneau_quotidien real relation{heure CHAR} key {heure};
-var Releve real relation{conso_kwh RATIONAL, heure CHAR, date CHAR}key{heure, date};
-var Date real relation{date CHAR} key {date};
-var Fournisseur real relation{id_fournisseur CHAR, libelle_fournisseur CHAR, telephone_fournisseur CHAR, mail_fournisseur CHAR} key {id_fournisseur};
+var formule_tarifaire real relation {id_formule INTEGER, lib_formule CHAR, descriptif_formule CHAR, date_commercialisation CHAR} key{id_formule};
+var puissance real relation {val_puissance INTEGER} key{val_puissance};
+var periode_conso real relation {id_periode_conso CHAR, lib_periode_conso CHAR} key{id_periode_conso};
+var tarif_abonnement real relation {prix_abo_ht RATIONAL, prix_abo_ttc RATIONAL, id_formule INTEGER, val_puissance INTEGER} key{id_formule, val_puissance};
+var tarif_kwh real relation {prix_kwh_ht RATIONAL, prix_kwh_ttc RATIONAL, val_puissance INTEGER, id_formule INTEGER, id_periode_conso CHAR} key{val_puissance, id_formule, id_periode_conso};
+var creneau real relation {no_creneau_hebdo INTEGER, jour_hebdo CHAR, heure_debut CHAR, heure_fin CHAR} key{no_creneau_hebdo};
+var client real relation {id_client INTEGER, nom_cli CHAR, prenom_cli CHAR, adresse_cli CHAR, adresse_cli2 CHAR, adresse_cli3 CHAR, code_postale_cli CHAR, ville_cli CHAR, telephone_cli CHAR, mail_cli CHAR} key{id_client};
+var compteur real relation {pdl_prm CHAR, adresse1 CHAR, adresse2 CHAR, adresse3 CHAR, code_postale CHAR, ville CHAR, date_hiver_ete CHAR, date_ete_hiver CHAR} key{pdl_prm};
+var contrat real relation{no_contrat CHAR, date_debut_contrat CHAR} key{no_contrat};
+var créneau_quotidien real relation{heure CHAR} key {heure};
+var releve real relation{conso_kwh RATIONAL, heure CHAR, date CHAR}key{heure, date};
+var date real relation{date CHAR} key {date};
+var fournisseur real relation{id_fournisseur CHAR, libelle_fournisseur CHAR, telephone_fournisseur CHAR, mail_fournisseur CHAR} key {id_fournisseur};
+
+
+// CONSTRAINT ville_fk_pays
+//     ville{nomp} <= pays{nomp};
