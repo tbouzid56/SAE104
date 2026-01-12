@@ -1,0 +1,13 @@
+drop var Formule_tarifaire;
+drop var Puissance;
+drop var Periode_conso;
+drop var Tarif_abonnement;
+drop var Tarif_kwh;
+drop var Creneau;
+drop var Client;
+drop var Compteur;
+drop var Contrat;
+drop var Créneau_quotidien;
+drop var Releve;
+drop var Date;
+drop var Fournisseur;
