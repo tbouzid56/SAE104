@@ -1,4 +1,3 @@
-// var ... real relation {att TYPE, att TYPE} key{att};
 var Formule_tarifaire real relation {id_formule INTEGER, lib_formule CHAR, descriptif_formule CHAR, date_commercialisation CHAR} key{id_formule};
 var Puissance real relation {val_puissance INTEGER} key{val_puissance};
 var Periode_conso real relation {id_periode_conso CHAR, lib_periode_conso CHAR} key{id_periode_conso};
