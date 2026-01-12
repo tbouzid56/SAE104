@@ -14,6 +14,14 @@ VAR baigne REAL RELATION{
     nomm    CHARACTER
 } KEY {nomp, nomm};
 
+
+
+
+
+
+
+
+
 CONSTRAINT baigne_fk_pays
     baigne{nomp} <= pays{nomp};
 CONSTRAINT baigne_fk_mer
@@ -34,14 +42,27 @@ VAR fleuve REAL RELATION {
 CONSTRAINT fleuve_fk_mer
     fleuve{nomm} <= mer{nomm};
 
+
+
+
+
+
+
+
+
 VAR arrose REAL RELATION{
     nomf    CHARACTER,
     nomv    CHARACTER
 } KEY {nomf,nomv};
+
+
+
 CONSTRAINT arrose_fk_fleuve
     arrose{nomf} <= fleuve{nomf};
 CONSTRAINT arrose_fk_ville
     arrose{nomv} <= ville{nomv};
+
+
 
 VAR traverse REAL RELATION{
     nomf    CHARACTER,

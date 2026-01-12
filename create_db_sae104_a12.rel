@@ -15,7 +15,7 @@ var fournisseur real relation{id_fournisseur CHAR, libelle_fournisseur CHAR, tel
 //mtn faut fair les fleches là
 var posseder real relation{id_client INTEGER, pdl_prm CHAR}key {id_client, pdl_prm};
 var proposer real relation{id_formule INTEGER, id_fournisseur INTEGER}key {id_formule, id_fournisseur};
-var comprend real relation{id_formule INTEGER, no_creneau_hebdo INTEGER}key{id_formule, no_creneau_hebdo};
+var comprend real relation{id_formule INTEGER, no_creneau_hebdo INTEGER}key{id_formule, no_creneau_hebdo}; //fait 
 var inclure real relation{id_formule INTEGER, id_periode_conso CHAR}key{id_formule, id_periode_conso};
 
 
@@ -23,3 +23,13 @@ CONSTRAINT comprend_fk_creneau
     comprend{no_creneau_hebdo} <= creneau{no_creneau_hebdo};
 CONSTRAINT comprend_fk_formule_tarifaire
     comprend{id_formule} <= formule_tarifaire{id_formule};
+
+CONSTRAINT inclure_fk_periode_conso
+    inclure{id_periode_conso} <= periode_conso{id_periode_conso};
+CONSTRAINT inclure_fk_formule_tarifaire
+    inclure{id_formule} <= formule_tarifaire{id_formule};
+
+CONSTRAINT posseder_fk_periode_client
+    posseder{id_client} <= periode_conso{id_client};
+CONSTRAINT posseder_fk_formule_compteur
+    posseder{pdl_prm} <= formule_tarifaire{pdl_prm};
