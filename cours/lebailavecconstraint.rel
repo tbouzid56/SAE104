@@ -1,0 +1,56 @@
+VAR pays REAL RELATION{
+	nomp			CHARACTER,
+	superficie	INTEGER,
+	pop				INTEGER
+} KEY {nomp};
+
+VAR mer REAL RELATION{
+    nomm        CHARACTER,
+    surface     INTEGER
+} KEY {nomm};
+
+VAR baigne REAL RELATION{
+    nomp    CHARACTER,
+    nomm    CHARACTER
+} KEY {nomp, nomm};
+
+CONSTRAINT baigne_fk_pays
+    baigne{nomp} <= pays{nomp};
+CONSTRAINT baigne_fk_mer
+    baigne{nomm} <= mer{nomm};
+
+VAR ville REAL RELATION{
+    nomv    CHARACTER,
+    nomp    CHARACTER
+} KEY {nomv};
+CONSTRAINT ville_fk_pays
+    ville{nomp} <= pays{nomp};
+
+VAR fleuve REAL RELATION {
+    nomf        CHARACTER,
+    longueur    INTEGER,
+    nomm        CHARACTER
+} KEY {nomf};
+CONSTRAINT fleuve_fk_mer
+    fleuve{nomm} <= mer{nomm};
+
+VAR arrose REAL RELATION{
+    nomf    CHARACTER,
+    nomv    CHARACTER
+} KEY {nomf,nomv};
+CONSTRAINT arrose_fk_fleuve
+    arrose{nomf} <= fleuve{nomf};
+CONSTRAINT arrose_fk_ville
+    arrose{nomv} <= ville{nomv};
+
+VAR traverse REAL RELATION{
+    nomf    CHARACTER,
+    nomp    CHARACTER
+} KEY{nomf,nomp};
+CONSTRAINT traverse_fk_fleuve
+    traverse{nomf} = fleuve{nomf};
+CONSTRAINT traverse_fk_pays
+    traverse{nomp} <= pays{nomp};
+
+
+    

@@ -12,6 +12,12 @@ var releve real relation{conso_kwh RATIONAL, heure CHAR, date CHAR}key{heure, da
 var date real relation{date CHAR} key {date};
 var fournisseur real relation{id_fournisseur CHAR, libelle_fournisseur CHAR, telephone_fournisseur CHAR, mail_fournisseur CHAR} key {id_fournisseur};
 
+//mtn faut fair les fleches là
+var posseder real relation{id_client INTEGER, pdl_prm CHAR}key {id_client, pdl_prm};
+var proposer real relation{id_formule INTEGER, id_fournisseur INTEGER}key {id_formule, id_fournisseur};
+var comprend real relation{id_formule INTEGER, no_creneau_hebdo INTEGER}key{id_formule, no_creneau_hebdo};
+var inclure real relation{id_formule INTEGER, id_periode_conso CHAR}key{id_formule, id_periode_conso};
+
 
 // CONSTRAINT ville_fk_pays
 //     ville{nomp} <= pays{nomp};
