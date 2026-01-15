@@ -12,12 +12,12 @@ var releve real relation{conso_kwh RATIONAL, heure CHAR, date CHAR}key{heure, da
 var date real relation{date CHAR} key {date};
 var fournisseur real relation{id_fournisseur CHAR, libelle_fournisseur CHAR, telephone_fournisseur CHAR, mail_fournisseur CHAR} key {id_fournisseur};
 
-//mtn faut fair les fleches là
 var posseder real relation{id_client INTEGER, pdl_prm CHAR}key {id_client, pdl_prm};
 var proposer real relation{id_formule INTEGER, id_fournisseur INTEGER}key {id_formule, id_fournisseur};
 var comprend real relation{id_formule INTEGER, no_creneau_hebdo INTEGER}key{id_formule, no_creneau_hebdo}; //fait 
 var inclure real relation{id_formule INTEGER, id_periode_conso CHAR}key{id_formule, id_periode_conso};
 
+var souscrire real relation {date CHAR, no_contrat CHAR, id_formule INTEGER}key{date, no_contrat};
 
 CONSTRAINT comprend_fk_creneau
     comprend{no_creneau_hebdo} <= creneau{no_creneau_hebdo};
@@ -29,7 +29,19 @@ CONSTRAINT inclure_fk_periode_conso
 CONSTRAINT inclure_fk_formule_tarifaire
     inclure{id_formule} <= formule_tarifaire{id_formule};
 
-CONSTRAINT posseder_fk_periode_client
-    posseder{id_client} <= periode_conso{id_client};
+CONSTRAINT posseder_fk_client
+    posseder{id_client} <= client{id_client};
 CONSTRAINT posseder_fk_formule_compteur
-    posseder{pdl_prm} <= formule_tarifaire{pdl_prm};
+    posseder{pdl_prm} <= clien{pdl_prm};
+
+CONSTRAINT proposer_fk_fournisseur
+    proposer{id_fournisseur} ? fournisseur{id_fournisseur};
+CONSTRAINT proposer_fk_formule_tarifaire
+    proposer{id_formule} ? formule_tarifaire{id_formule};
+
+CONSTRAINT formule_fk_contrat
+    formule{no_contrat} ? contrat{no_contrat};
+CONSTRAINT formule_fk_date
+    formule{date} ? date{date};
+CONSTRAINT formule_fk_formule_tarifaire
+    formule{id_formule} ? formule_tarifaire{id_formule};
