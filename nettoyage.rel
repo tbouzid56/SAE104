@@ -11,6 +11,7 @@ drop var Créneau_quotidien;
 drop var Releve;
 drop var Date;
 drop var Fournisseur;
-
-//penser à faire nettoyage de constraint
-
+drop var Posseder;
+drop var Proposer;
+drop var Comprend;
+drop var Inclure;
