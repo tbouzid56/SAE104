@@ -16,7 +16,6 @@ var posseder real relation{id_client INTEGER, pdl_prm CHAR}key {id_client, pdl_p
 var proposer real relation{id_formule INTEGER, id_fournisseur CHAR}key {id_formule, id_fournisseur};
 var comprend real relation{id_formule INTEGER, no_creneau_hebdo INTEGER}key{id_formule, no_creneau_hebdo}; 
 var inclure real relation{id_formule INTEGER, id_periode_conso CHAR}key{id_formule, id_periode_conso};
-
 var souscrire real relation {date CHAR, no_contrat CHAR, id_formule INTEGER}key{date, no_contrat};
 
 
@@ -49,7 +48,7 @@ CONSTRAINT tarif_abonnement_fk_formule_tarifaire
     tarif_abonnement{id_formule} <= formule_tarifaire{id_formule};
 
 CONSTRAINT tarif_kwh_fk_puissance
-    tarif_kwh{val_puissance} <= puissance{val_puissance};
+tarif_kwh{val_puissance} <= puissance{val_puissance};
 CONSTRAINT tarif_kwh_fk_formule_tarifaire
     tarif_kwh{id_formule} <= formule_tarifaire{id_formule};
 CONSTRAINT tarif_kwh_fk_periode_conso
@@ -73,4 +72,3 @@ CONSTRAINT contrat_fk_client
     contrat{id_client} <= client{id_client};
 CONSTRAINT contrat_fk_compteur
     contrat{pdl_prm} <= compteur{pdl_prm};
-
