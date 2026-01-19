@@ -21,21 +21,25 @@ var souscrire real relation {date CHAR, no_contrat CHAR, id_formule INTEGER}key{
 
 CONSTRAINT posseder_fk_client
     posseder{id_client} <= client{id_client};
+
 CONSTRAINT posseder_fk_compteur
     posseder{pdl_prm} <= compteur{pdl_prm};
 
 CONSTRAINT proposer_fk_fournisseur
     proposer{id_fournisseur} <= fournisseur{id_fournisseur};
+
 CONSTRAINT proposer_fk_formule_tarifaire
     proposer{id_formule} <= formule_tarifaire{id_formule};
 
 CONSTRAINT comprend_fk_creneau
     comprend{no_creneau_hebdo} <= creneau{no_creneau_hebdo};
+
 CONSTRAINT comprend_fk_formule_tarifaire
     comprend{id_formule} <= formule_tarifaire{id_formule};
 
 CONSTRAINT inclure_fk_formule_tarifaire
     inclure{id_formule} <= formule_tarifaire{id_formule};
+
 CONSTRAINT inclure_fk_periode_conso
     inclure{id_periode_conso} <= periode_conso{id_periode_conso};
 
@@ -44,31 +48,39 @@ CONSTRAINT periode_conso_fk_creneau
 
 CONSTRAINT tarif_abonnement_fk_puissance
     tarif_abonnement{val_puissance} <= puissance{val_puissance};
+
 CONSTRAINT tarif_abonnement_fk_formule_tarifaire
     tarif_abonnement{id_formule} <= formule_tarifaire{id_formule};
 
 CONSTRAINT tarif_kwh_fk_puissance
 tarif_kwh{val_puissance} <= puissance{val_puissance};
+
 CONSTRAINT tarif_kwh_fk_formule_tarifaire
     tarif_kwh{id_formule} <= formule_tarifaire{id_formule};
+
 CONSTRAINT tarif_kwh_fk_periode_conso
     tarif_kwh{id_periode_conso} <= periode_conso{id_periode_conso};
 
 CONSTRAINT releve_fk_creneau_quotidien
     releve{heure} <= creneau_quotidien{heure};
+
 CONSTRAINT releve_fk_date
     releve{date} <= date{date};
+
 CONSTRAINT releve_fk_compteur
     releve{pdl_prm} <= compteur{pdl_prm};
 
 CONSTRAINT souscrire_fk_contrat
     souscrire{no_contrat} <= contrat{no_contrat};
+
 CONSTRAINT souscrire_fk_formule_tarifaire
     souscrire{id_formule} <= formule_tarifaire{id_formule};
+
 CONSTRAINT souscrire_fk_date
     souscrire{date} <= date{date};
 
 CONSTRAINT contrat_fk_client
     contrat{id_client} <= client{id_client};
+    
 CONSTRAINT contrat_fk_compteur
     contrat{pdl_prm} <= compteur{pdl_prm};
