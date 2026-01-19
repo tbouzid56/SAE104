@@ -19,30 +19,8 @@ var Inclure real relation{id_formule INTEGER, id_periode_conso CHAR}key{id_formu
 
 var Souscrire real relation {date CHAR, no_contrat CHAR, id_formule INTEGER}key{date, no_contrat};
 
-/* CONSTRAINT comprend_fk_creneau
-    comprend{no_creneau_hebdo} <= creneau{no_creneau_hebdo};
-CONSTRAINT comprend_fk_formule_tarifaire
-    comprend{id_formule} <= formule_tarifaire{id_formule};
-
-CONSTRAINT inclure_fk_periode_conso
-    inclure{id_periode_conso} <= periode_conso{id_periode_conso};
-CONSTRAINT inclure_fk_formule_tarifaire
-    inclure{id_formule} <= formule_tarifaire{id_formule};
 
 CONSTRAINT posseder_fk_client
     posseder{id_client} <= client{id_client};
 CONSTRAINT posseder_fk_formule_compteur
     posseder{pdl_prm} <= clien{pdl_prm};
-
-CONSTRAINT proposer_fk_fournisseur
-    proposer{id_fournisseur} ? fournisseur{id_fournisseur};
-CONSTRAINT proposer_fk_formule_tarifaire
-    proposer{id_formule} ? formule_tarifaire{id_formule};
-
-CONSTRAINT formule_fk_contrat
-    formule{no_contrat} ? contrat{no_contrat};
-CONSTRAINT formule_fk_date
-    formule{date} ? date{date};
-CONSTRAINT formule_fk_formule_tarifaire
-    formule{id_formule} ? formule_tarifaire{id_formule}; */
-
